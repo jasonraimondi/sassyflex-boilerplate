@@ -1,0 +1,4 @@
+node_modules/
+vendor/
+
+sftp-config.json
