@@ -1,1 +1,62 @@
 @import 'sassyflex';
+
+$primary-color: tomato;
+
+body, html {
+	@include size(100%);
+	background-color: $snow;
+	color: $oil;
+}
+
+#intro {
+	 width: 100%;
+	 min-height: 100%;
+}
+
+.grid-box {
+  min-height: rem(50);
+  color: $gainsboro;
+}
+
+
+.container {
+  margin: rem(50) auto;
+}
+
+.component {
+  margin: rem(50) 0;
+
+  &:first-child {
+  	margin-top: 0;
+  }
+  &:last-child {
+  	margin-bottom: 0;
+  }
+
+	header {
+		h2 {
+			font-weight: bold;
+			border-bottom: rem(1) solid $iron;
+			padding-bottom: rem(10);
+			margin-bottom: rem(25);
+		}
+	}
+
+
+}
+
+#typography article {
+	margin: rem(25) 0;
+}
+
+
+
+.tomato {
+  background-color: $primary-color;
+}
+.light-tomato {
+  background-color: scale-color($primary-color, $lightness: 25%);
+}
+.lightest-tomato {
+  background-color: scale-color($primary-color, $lightness: 50%);
+}
