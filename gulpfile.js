@@ -19,7 +19,9 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     cache = require('gulp-cache'),
     livereload = require('gulp-livereload'),
-    del = require('del'); // clean paths.DESTINATION before running
+    del = require('del'), // clean paths.DESTINATION before running
+    watch = require('gulp-watch');
+
 
 gulp.task('styles', function() {
   return gulp.src(paths.SOURCE + 'sass/style.scss')
@@ -46,7 +48,7 @@ gulp.task('scripts', function() {
     .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
+    .pipe(concat('app.js'))
     .pipe(gulp.dest(paths.DESTINATION + 'js'))
     .pipe(gulpif(argv.production, uglify()))
     .pipe(sourcemaps.write('./maps'))
@@ -81,6 +83,16 @@ gulp.task('images', function() {
     .pipe(notify({ message: 'Images task complete' }));
 });
 
+
+gulp.task('watch', function() {
+
+  gulp.watch(paths.SOURCE + 'sass/**/*.scss', ['styles']);
+  gulp.watch(paths.SOURCE + 'js/**/*.js', ['scripts']);
+  gulp.watch(paths.SOURCE + 'images/**/*', ['images']);
+
+});
+
+
 gulp.task('clean', function(cb) {
     del(paths.DESTINATION, cb)
 });
@@ -88,3 +100,4 @@ gulp.task('clean', function(cb) {
 gulp.task('default', ['clean'], function() {
     gulp.start('styles', 'scripts', 'bower-scripts', 'images');
 });
+
