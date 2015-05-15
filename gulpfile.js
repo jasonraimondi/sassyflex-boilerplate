@@ -30,8 +30,6 @@ gulp.task('styles', function() {
         style: 'expanded',
         includePaths : [
                paths.BOWER + 'normalize-scss',
-               paths.BOWER + 'bourbon/app/assets/stylesheets',
-               paths.BOWER + 'neat/app/assets/stylesheets',
                paths.BOWER + 'sassyflex/sass'
            ]
     }).on('error', sass.logError))
